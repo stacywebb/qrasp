@@ -27,8 +27,8 @@ def execute():
     circuit.measure(qr[0], cr[0])
     circuit.measure(qr[1], cr[1])
     # Set the backend to execute on
-    from qiskit import Aer
-    backend = Aer.get_backend('qasm_simulator')
+    from qiskit import BasicAer
+    backend = BasicAer.get_backend('qasm_simulator'
     # Create a Quantum Program for execution of the circuit on the selected backend
     job = execute(circuit, backend, shots=sh)
     # Get the result of the execution
