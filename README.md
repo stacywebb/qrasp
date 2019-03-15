@@ -19,7 +19,7 @@ Python scripts creating two or three qubit quantum circuits and displaying resul
 - Installation (Required Software)
   - ```sudo apt-get install sense-hat```
   - ```sudo pip3 install qiskit==0.7.1```
-  - ```git clone https://github.com/stacywebb/qrasp/qrasp.git```
+  - ```git clone https://github.com/stacywebb/qrasp.git```
 
 
 ## Usage
