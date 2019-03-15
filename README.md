@@ -1,30 +1,43 @@
-# Qrasp - Two and three qubit Qiskit user interface on Raspberry PI SenseHat
-A set of Python scripts that uses [Qiskit](https://qiskit.org) to run two or three qubit quantum circuits and display the results as bar graphs on a Raspberry PI SenseHat 8x8 LED display.
+# Two and three qubit Qiskit user interface on Raspberry PI
+
+
+Python scripts creating two or three qubit quantum circuits and displaying results as bar graphs on a Raspberry PI 3.
+
 
 ![qrasp_3qubit_GHZ.jpg](qrasp_3qubit_GHZ.jpg)
 
+
 ## Requirements  
 
-These scripts were developed and tested with the following hard- and software:
 - Hardware
-   - Raspberry PI 2B (a21041)
-   - Raspberry Pi Sense HAT (v1.0)
+   - Raspberry PI 3
+   - Raspberry Pi Sense HAT
+   
 - Software
-  - Raspbian GNU/Linux 9 (stretch)
-  - [qiskit](https://qiskit.org/) 0.6.1 (seems to run fine on 0.7)
-  - sense-hat 2.2.0
+  - Python 3 (2.7 should work)
+  
+- Installation (Required Software)
+  - ```sudo apt-get install sense-hat```
+  - ```sudo pip3 install qiskit==0.7.1```
+  - ```git clone https://github.com/stacywebb/qrasp/qrasp.git```
 
+
+## Usage
+
+- python3 main_controller.py
 
 ## Contents
-Qrasp consists of the following scripts:
-1. main_controller.py  
-This script loads the required libraries, and uses the SenseHat joystick to select one of the Quantum programs.
 
-2. Quantum program scripts  
-These scripts creates and executes the quantum programs, and then calls the display script with the results. For more information about the circuits and how to construct your own, see the [IBM Q Experience Beginners Guide](https://quantumexperience.ng.bluemix.net/qx/tutorial?sectionId=beginners-guide&page=introduction).
-   - q2_calling_sense_func.py  
-Python function that creates a simple, two qubit quantum cirquit and sets up and measures each qubit in a superposition state.
-     ```
+- Scripts
+   - main_controller.py  - Main Loading Script
+
+
+- Quantum program scripts
+   
+   - q2_calling_sense_func.py - creates two qubit quantum circuit and measures each qubit in a superposition state.
+   
+   
+    ```
                       ┌───┐┌─┐
      q0_0: |0>────────┤ H ├┤M├
               ┌───┐┌─┐└───┘└╥┘
@@ -34,8 +47,11 @@ Python function that creates a simple, two qubit quantum cirquit and sets up and
                     ║         
       c0_1: 0 ══════╩═════════
      ```
-   - q3_calling_sense_func.py  
-Python function that creates a simple, three qubit quantum cirquit and sets up and measures each qubit in a superposition state.
+   
+   
+   - q3_calling_sense_func.py - creates a three qubit quantum circuit and measures each qubit in a superposition state.
+   
+   
      ```
                               ┌───┐┌─┐
      q1_0: |0>────────────────┤ H ├┤M├
@@ -50,8 +66,11 @@ Python function that creates a simple, three qubit quantum cirquit and sets up a
                     ║                 
       c1_2: 0 ══════╩═════════════════
      ```
-   - bell_calling_sense_func.py  
-Python function that creates a simple, two qubit quantum cirquit and sets up and measures a Bell, or entangled, state.
+   
+   
+   - bell_calling_sense_func.py - creates a two qubit quantum circuit and measures a Bell, or entangled, state.
+   
+   
      ```
               ┌───┐        ┌─┐
      q2_0: |0>┤ H ├──■─────┤M├
@@ -62,8 +81,11 @@ Python function that creates a simple, two qubit quantum cirquit and sets up and
                          ║    
       c2_1: 0 ═══════════╩════
      ```
-   - GHZ_calling_sense_func.py  
-Python function that creates a simple, three qubit quantum cirquit and sets up and measures an entangled GHZ state.
+     
+     
+   - GHZ_calling_sense_func.py - creates a three qubit quantum circuit and measures an entangled GHZ state.
+   
+   
      ```
                                      ┌───┐             ┌───┐┌─┐
      q3_0: |0>───────────────────────┤ H ├──■──────────┤ H ├┤M├
@@ -78,22 +100,22 @@ Python function that creates a simple, three qubit quantum cirquit and sets up a
                                                      ║         
       c3_2: 0 ═══════════════════════════════════════╩═════════
      ```
-3. qc_sensehat_func.py  
-Using SenseHat 8x8 display to show bar graph of 2 or 3 qubit Qiskit results dictionaries.
+     
+     
+   - qc_sensehat_func.py - utilizes SenseHat 8x8 display to show bar graph of 2 or 3 qubit Qiskit results dictionaries.
 
-### What you can do with this version...
-This version lets you run four different quantum scripts that demo superposition and entanglement with two and three qubits.
 
-You use the joystick to select the script to run:
-- Up: Two qubit Bell state (entanglement)
-- Down: Three qubit GHZ state (entanglement)
-- Right: Three qubit superposition
-- Left: Two qubit superposition
+### Usage (Physical interaction)
 
-The quantum circuits currently run on the 'qasm_simulator' backend.
+The four quantum scripts demostrate superposition and entanglement with two and three qubits.
 
-### Planned for the future
-- Use of the joystick 'button' to switch between simulator and hardware backend.
-- Snazzy 'quantum calculations running' animation on the 8x8 LED display while the simulation is running or while waiting for the hardware backend to return results.
-- Color gradients between the red and blue LEDs to indicate results with finer granularity than 1/8 or the bar.
-- More...
+ - Using the joystick (on the SenseHat) select the script to run:
+ 
+ ```
+   Up: Two qubit Bell state (entanglement)
+   Down: Three qubit GHZ state (entanglement)
+   Right: Three qubit superposition
+   Left: Two qubit superposition
+```
+
+Quantum circuits currently run on the qasm_simulator backend.
